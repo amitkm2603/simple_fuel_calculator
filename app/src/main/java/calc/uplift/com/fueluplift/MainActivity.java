@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.content.Context;
 import android.widget.Toast;
+import android.graphics.drawable.ScaleDrawable;
 //define the elements to be accessed from UI
 
 public class MainActivity extends ActionBarActivity
@@ -24,6 +25,7 @@ public class MainActivity extends ActionBarActivity
     Button calculate;
     Button reset;
     Context  context;
+    String default_val = "0.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,12 @@ public class MainActivity extends ActionBarActivity
          calculate = (Button)findViewById(R.id.calculate_btn);
          reset = (Button)findViewById(R.id.reset_btn);
          context = getApplicationContext();
+        //setting up drawable to put "0." as suffix to any input
+         Drawable_int default_num_text = new Drawable_int(default_val,specific_gravity.getTextSize());
+//         default_num_text.setBounds(0, (int) specific_gravity.getTextSize(), 0, (int) specific_gravity.getTextSize());
+
+         specific_gravity.setCompoundDrawablesWithIntrinsicBounds(default_num_text, null, null, null);
+         specific_gravity.setCompoundDrawablePadding((int)specific_gravity.getTextSize());
 
     }
 
@@ -70,7 +78,8 @@ public class MainActivity extends ActionBarActivity
     {
         try{
             float fuel_uplift_float = Float.parseFloat(fuel_uplift.getText().toString());
-            float specific_gravity_float = Float.parseFloat(specific_gravity.getText().toString());
+            //padding 0. as the UI is limited to take only input less than 0.xxx
+            float specific_gravity_float = Float.parseFloat("0."+specific_gravity.getText().toString());
             float fuel_uplift_calculated  = fuel_uplift_float * specific_gravity_float;
 
             float total_fuel_required_float =  Float.parseFloat(total_fuel_required.getText().toString());

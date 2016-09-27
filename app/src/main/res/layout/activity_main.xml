@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="A/C System [AC]"
+        android:text="A/C System [Kg]"
         android:textStyle="bold"
         android:id="@+id/textView3"
         android:layout_alignTop="@+id/textView2"
@@ -116,13 +116,14 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:ems="10"
         android:id="@+id/spec_grav_txt"
         android:layout_alignTop="@+id/before_ref_txt"
         android:layout_toLeftOf="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true">
+    </EditText>
 
     <EditText
         android:layout_width="wrap_content"
